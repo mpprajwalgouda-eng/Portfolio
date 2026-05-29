@@ -10,4 +10,4 @@ This repository contains a personal portfolio website built with plain HTML, CSS
 
 ## Usage
 
-Open `portfolio/index.html` in a browser to view the site.
+Open `index.html` in a browser to view the site.

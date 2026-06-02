@@ -402,8 +402,9 @@ img {
     transition: 0.4s;
 }
 
-.header.scroll-header {
-    background: rgba(5, 5, 5, 0.7);
+.header.scroll-header,
+.header.menu-open {
+    background: rgba(5, 5, 5, 0.95);
     backdrop-filter: blur(16px);
     -webkit-backdrop-filter: blur(16px);
     border-bottom: 1px solid var(--glass-border);
@@ -1268,12 +1269,16 @@ img {
         backdrop-filter: blur(20px);
         box-shadow: 0 4px 10px rgba(0,0,0,0.5);
         border-bottom: 1px solid var(--glass-border);
-        transition: 0.4s;
+        transition: top 0.4s ease, opacity 0.4s ease, visibility 0.4s ease;
         z-index: var(--z-fixed);
+        visibility: hidden;
+        opacity: 0;
     }
     
     .nav-menu.show-menu {
         top: 80px;
+        visibility: visible;
+        opacity: 1;
     }
     
     .nav-list {

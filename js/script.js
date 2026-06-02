@@ -39,10 +39,12 @@ document.addEventListener('DOMContentLoaded', () => {
     const navMenu = document.querySelector('.nav-menu');
     const navToggle = document.getElementById('nav-toggle');
     const navLinks = document.querySelectorAll('.nav-link');
+    const header = document.querySelector('.header');
 
     if(navToggle) {
         navToggle.addEventListener('click', () => {
             navMenu.classList.toggle('show-menu');
+            if (header) header.classList.toggle('menu-open');
             // Toggle icon
             const icon = navToggle.querySelector('i');
             if(navMenu.classList.contains('show-menu')){
@@ -59,6 +61,7 @@ document.addEventListener('DOMContentLoaded', () => {
     navLinks.forEach(link => {
         link.addEventListener('click', () => {
             navMenu.classList.remove('show-menu');
+            if (header) header.classList.remove('menu-open');
             const icon = navToggle.querySelector('i');
             icon.classList.remove('fa-times');
             icon.classList.add('fa-bars');
@@ -66,11 +69,23 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 
     /* ================= STICKY HEADER ================= */
-    const header = document.querySelector('.header');
     
     const scrollHeader = () => {
-        if(window.scrollY >= 50) header.classList.add('scroll-header');
-        else header.classList.remove('scroll-header');
+        if (header) {
+            if(window.scrollY >= 50) header.classList.add('scroll-header');
+            else header.classList.remove('scroll-header');
+        }
+        
+        // Close mobile menu on scroll
+        if(navMenu && navMenu.classList.contains('show-menu')) {
+            navMenu.classList.remove('show-menu');
+            if (header) header.classList.remove('menu-open');
+            const icon = navToggle ? navToggle.querySelector('i') : null;
+            if(icon) {
+                icon.classList.remove('fa-times');
+                icon.classList.add('fa-bars');
+            }
+        }
     }
     window.addEventListener('scroll', scrollHeader);
 

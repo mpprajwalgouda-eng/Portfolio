@@ -1261,7 +1261,7 @@ img {
 @media screen and (max-width: 768px) {
     .nav-menu {
         position: fixed;
-        top: -100%;
+        top: 80px;
         left: 0;
         width: 100%;
         padding: 4rem 0;
@@ -1269,16 +1269,17 @@ img {
         backdrop-filter: blur(20px);
         box-shadow: 0 4px 10px rgba(0,0,0,0.5);
         border-bottom: 1px solid var(--glass-border);
-        transition: top 0.4s ease, opacity 0.4s ease, visibility 0.4s ease;
+        transition: transform 0.4s ease, opacity 0.4s ease, visibility 0.4s ease;
         z-index: var(--z-fixed);
         visibility: hidden;
         opacity: 0;
+        transform: translateY(-150%);
     }
     
     .nav-menu.show-menu {
-        top: 80px;
         visibility: visible;
         opacity: 1;
+        transform: translateY(0);
     }
     
     .nav-list {
